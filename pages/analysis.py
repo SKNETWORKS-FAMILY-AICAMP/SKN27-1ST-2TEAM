@@ -25,7 +25,6 @@ with col_main:
 
     .stApp { background-color: #f8fafc; }
                 
-   
     section[data-testid="stSidebar"] { background-color: #ffffff; border-right: 1px solid #e2e8f0; }
     .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); margin-bottom: 24px; }
     .card-header { font-size: 17px; font-weight: 700; color: #1e293b; padding-bottom: 16px; }

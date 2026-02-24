@@ -50,8 +50,9 @@ with col_main:
         font-size: 15px; font-weight: 600; color: #1e293b; flex: 1; line-height: 1.6;
     }
     .faq-a {
-        background: #f8fafc; border-top: 1px solid #e2e8f0;
-        padding: 18px 20px 18px 62px;
+        background: #ffffff; 
+        margin-top:-10px;
+        margin-bottom:10px;
     }
     .faq-a-badge {
         color: #2563eb; font-size: 14px; font-weight: 900; margin-right: 8px;

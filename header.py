@@ -3,17 +3,76 @@ import streamlit as st
 def render_header(current_page=""):
     st.markdown("""
     <style>
-    @import url('https://cdn.jsdelivr.net/gh/webfontworld/paperlogy/Paperlogy.css');
-* { font-family: 'Paperlogy', sans-serif; }
+    @font-face {
+        font-family: 'Paperlogy';
+        src: url('/app/static/Paperlogy-1Thin.ttf') format('truetype');
+        font-weight: 100; /* Thin */
+    }
+
+    @font-face {
+        font-family: 'Paperlogy';
+        src: url('/app/static/Paperlogy-3Light.ttf') format('truetype');
+        font-weight: 300; /* Light */
+    }
+
+    @font-face {
+        font-family: 'Paperlogy';
+        src: url('/app/static/Paperlogy-5Medium.ttf') format('truetype');
+        font-weight: 500; /* Medium */
+    }
+
+    @font-face {
+        font-family: 'Paperlogy';
+        src: url('/app/static/Paperlogy-7Bold.ttf') format('truetype');
+        font-weight: 700; /* Bold */
+    }
+
+    @font-face {
+        font-family: 'Paperlogy';
+        src: url('/app/static/Paperlogy-8ExtraBold.ttf') format('truetype');
+        font-weight: 800; /* ExtraBold */
+    }
+   *, *::before, *::after,
+    html, body, .stApp, .stMarkdown,
+    h1, h2, h3, h4, h5, h6,
+    p, span, div, a, button, input, label, textarea {
+        font-family: 'Paperlogy', sans-serif !important;
+    }             
                 
+
+    .stMarkdown p {
+    margin: 0px !important;
+    padding: 0px !important;
+    }
+
     div[data-testid="stMainBlockContainer"] {
         max-width: 100% !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    
-    
                 
+    /* Deploy 버튼 숨기기 */
+    .stDeployButton { display: none !important; }
+
+    /* 사이드바 화살표 숨기기 */
+    button[data-testid="collapsedControl"] { display: none !important; }
+
+    # /* 상단 Streamlit 메뉴 숨기기 */
+    MainMenu { display: none !important; }
+    header[data-testid="stHeader"] { display: none !important; }
+        
+    /* 1. 화살표 역할을 하는 텍스트(keyboard_arrow_down)를 투명하게 제거 */
+    span[data-testid="stIconMaterial"] {
+        font-size: 0px !important;
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* 2. 아이콘이 담긴 span 컨테이너의 너비까지 제거하여 글씨 쏠림 방지 */
+    .st-emotion-cache-1c9yjad.exvv1vr0 {
+        display: none !important;
+    }     
+                    
     .header-wrap {
         background: white;
         border-bottom: 1px solid #e2e8f0;
@@ -22,7 +81,7 @@ def render_header(current_page=""):
         justify-content: space-between;
         height: 64px;
         margin-bottom: 32px;
-        margin-top: -60px;
+        margin-top: -120px;
         padding-right: 50px;
         padding-left: 50px;
 
