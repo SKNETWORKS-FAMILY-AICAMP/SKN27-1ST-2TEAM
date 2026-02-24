@@ -46,7 +46,7 @@ with col_main:
     .contact-box p { color: #1e40af; font-size: 14px; margin: 0; }
 
     .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); margin-bottom: 24px; }
-    .card-header { font-size: 17px; font-weight: 700; color: #1e293b; padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 20px; }
+    .card-header { font-size: 17px; font-weight: 700; color: #1e293b; padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; }
 
     .agree-item {
         background: #f8fafc; border: 1px solid #e2e8f0;
@@ -58,7 +58,7 @@ with col_main:
         display: inline-block;
         background: #dc2626; color: white;
         font-size: 12px; font-weight: 700;
-        padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;
+        padding: 3px 10px; border-radius: 20px; margin-bottom: 20px;
     }
     .success-box {
         background: #f0fdf4; border: 1.5px solid #86efac;
