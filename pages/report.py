@@ -6,7 +6,7 @@ from header import render_header
 
 
 st.set_page_config(
-    page_title="결함신고 - 리콜체커",
+    page_title="RecallChecker",
     page_icon="🚨",
     layout="wide"
 )
