@@ -203,6 +203,8 @@ with col_main:
                 xaxis_title="", yaxis_title="",
                 plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)'
             )
+
+
             st.plotly_chart(fig_car, use_container_width=True, config={'displayModeBar': False})
             for i, row in car_df.iterrows():
                 with st.expander(f"{i+1}.  {row['차종']}  ({row['리콜 건수']}건)"):
@@ -212,6 +214,33 @@ with col_main:
                         st.markdown(f"- {reason} ({cnt}건)")
             st.markdown('</div>', unsafe_allow_html=True)
 
+       
+        # 리콜 사유 키워드 분석
+        st.markdown('<div class="card"><div class="card-header">🔍 주요 리콜 사유 키워드 TOP 10</div>', unsafe_allow_html=True)
+        keywords = [
+            "엔진", "에어백", "브레이크", "연료", "조향", "변속기", "배터리",
+            "전기", "화재", "누유", "누수", "소프트웨어", "ECU", "서스펜션",
+            "타이어", "시동", "가속", "냉각", "배기", "클러치", "안전벨트",
+            "램프", "센서", "모터", "충전", "파손", "부식", "결함"
+        ]
+        text_all = " ".join(filtered_df["리콜사유"].dropna().astype(str).tolist())
+        kw_counts = {kw: text_all.count(kw) for kw in keywords}
+        kw_df = pd.DataFrame(list(kw_counts.items()), columns=["키워드", "빈도"])
+        kw_df = kw_df[kw_df["빈도"] > 0].sort_values("빈도", ascending=False).head(10).reset_index(drop=True)
+
+        if not kw_df.empty:
+            fig_kw = px.bar(kw_df, x="키워드", y="빈도",
+                            text="빈도", color_discrete_sequence=[color_brand])
+            fig_kw.update_traces(textposition='outside', texttemplate='%{text}회')
+            fig_kw.update_layout(
+                height=350, margin=dict(l=10, r=10, t=10, b=10),
+                xaxis_title="", yaxis_title="언급 횟수",
+                plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)'
+            )
+            st.plotly_chart(fig_kw, use_container_width=True, config={'displayModeBar': False})
+        else:
+            st.info("키워드 데이터를 불러올 수 없습니다.")
+        st.markdown('</div>', unsafe_allow_html=True)
 
         # 연도별 추이
         st.markdown('<div class="card"><div class="card-header">📅 연도별 리콜 건수 추이</div>', unsafe_allow_html=True)
