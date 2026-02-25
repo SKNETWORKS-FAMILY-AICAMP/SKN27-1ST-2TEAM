@@ -135,26 +135,26 @@ with col_main:
     st.markdown(f'<div class="faq-count">전체 <strong>{len(filtered)}건</strong></div>', unsafe_allow_html=True)
 
     # ── 화면 출력 부분 ──
-if len(filtered) == 0:
-    st.info("검색 결과가 없습니다. 다른 키워드로 검색해보세요.")
-else:
-    # row.iterrows()를 쓰면 인덱스와 행을 함께 가져옵니다.
-    for i, row in filtered.iterrows():
-        # DB 컬럼명인 'question'과 'answer'를 사용하세요!
-        answer= str(row.get("answer", "")).strip()
-        question  = str(row.get("question", "")).strip()
-        
-        # 줄바꿈 및 이스케이프 문자 처리
-        answer = answer.replace("\\n", "\n").replace(" \n ", "\n")
+    if len(filtered) == 0:
+        st.info("검색 결과가 없습니다. 다른 키워드로 검색해보세요.")
+    else:
+        # row.iterrows()를 쓰면 인덱스와 행을 함께 가져옵니다.
+        for i, row in filtered.iterrows():
+            # DB 컬럼명인 'question'과 'answer'를 사용하세요!
+            answer= str(row.get("answer", "")).strip()
+            question  = str(row.get("question", "")).strip()
+            
+            # 줄바꿈 및 이스케이프 문자 처리
+            answer = answer.replace("\\n", "\n").replace(" \n ", "\n")
 
-        # 환상님이 만드신 예쁜 expander UI에 데이터 담기
-        with st.expander(f"Q.  {answer}"):
-            st.markdown(f"""
-            <div class="faq-a">
-                <span class="faq-a-badge">A.</span>
-                <span class="faq-a-text">{question}</span>
-            </div>
-            """, unsafe_allow_html=True)
+            # 환상님이 만드신 예쁜 expander UI에 데이터 담기
+            with st.expander(f"Q.  {answer}"):
+                st.markdown(f"""
+                <div class="faq-a">
+                    <span class="faq-a-badge">A.</span>
+                    <span class="faq-a-text">{question}</span>
+                </div>
+                """, unsafe_allow_html=True)
 
     # ── 하단 연락처 ──
     st.markdown("""
