@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 
 #헤더 페이지 추가 
 from header import render_header
-
 
 st.set_page_config(
     page_title="리콜 분석 - 리콜체커",
@@ -119,9 +119,20 @@ with col_main:
         st.markdown('<div class="card"><div class="card-header">🏭 브랜드별 리콜 건수 TOP 10</div>', unsafe_allow_html=True)
         brand_df = df["제작자"].value_counts().head(10).reset_index()
         brand_df.columns = ["브랜드", "리콜 건수"]
-        st.bar_chart(brand_df.set_index("브랜드"), color="#dc2626")
+        
+        # Plotly Bar Chart로 교체
+        fig_brand = px.bar(brand_df, x="브랜드", y="리콜 건수", 
+                        text="리콜 건수", # 막대 위에 숫자 표시
+                        color_discrete_sequence=["#dc2626"])
+        fig_brand.update_traces(textposition='outside', texttemplate='%{text}건')
+        fig_brand.update_layout(
+            height=400, margin=dict(l=10, r=10, t=10, b=10),
+            xaxis_title="", yaxis_title="",
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_brand, use_container_width=True, config={'displayModeBar': False})
 
-        # 순위 리스트
+        # 순위 리스트 (기본 코드 유지)
         for i, row in brand_df.iterrows():
             st.markdown(f"""
             <div class="rank-item">
@@ -129,16 +140,26 @@ with col_main:
                 <div class="rank-name">{row['브랜드']}</div>
                 <div class="rank-count">{row['리콜 건수']}건</div>
             </div>""", unsafe_allow_html=True)
-
         st.markdown('</div>', unsafe_allow_html=True)
 
     with col_right:
         st.markdown('<div class="card"><div class="card-header">🚗 차종별 리콜 건수 TOP 10</div>', unsafe_allow_html=True)
         car_df = df["차명"].value_counts().head(10).reset_index()
         car_df.columns = ["차종", "리콜 건수"]
-        st.bar_chart(car_df.set_index("차종"), color="#f97316")
+        
+        # Plotly Bar Chart로 교체
+        fig_car = px.bar(car_df, x="차종", y="리콜 건수", 
+                        text="리콜 건수", 
+                        color_discrete_sequence=["#f97316"])
+        fig_car.update_traces(textposition='outside', texttemplate='%{text}건')
+        fig_car.update_layout(
+            height=400, margin=dict(l=10, r=10, t=10, b=10),
+            xaxis_title="", yaxis_title="",
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_car, use_container_width=True, config={'displayModeBar': False})
 
-        # 순위 리스트
+        # 순위 리스트 (기본 코드 유지)
         for i, row in car_df.iterrows():
             st.markdown(f"""
             <div class="rank-item">
@@ -146,7 +167,6 @@ with col_main:
                 <div class="rank-name">{row['차종']}</div>
                 <div class="rank-count">{row['리콜 건수']}건</div>
             </div>""", unsafe_allow_html=True)
-
         st.markdown('</div>', unsafe_allow_html=True)
 
     # ── 연도별 리콜 추이 ──
@@ -156,7 +176,22 @@ with col_main:
         year_df = df["리콜연도"].value_counts().sort_index().reset_index()
         year_df.columns = ["연도", "리콜 건수"]
         year_df = year_df[year_df["연도"] >= 2010]
-        st.line_chart(year_df.set_index("연도"), color="#dc2626")
+        year_df["연도"] = year_df["연도"].astype(int)
+
+        # Plotly Line Chart로 교체
+        fig_year = px.line(year_df, x="연도", y="리콜 건수", markers=True, text="리콜 건수")
+        fig_year.update_traces(
+            line_color="#dc2626", 
+            textposition="top center", 
+            texttemplate='%{text}건'
+        )
+        fig_year.update_layout(
+            height=400, margin=dict(l=20, r=20, t=30, b=20),
+            xaxis=dict(tickmode='linear', dtick=1), # 연도별로 축 눈금 표시
+            xaxis_title="", yaxis_title="",
+            plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)'
+        )
+        st.plotly_chart(fig_year, use_container_width=True, config={'displayModeBar': False})
     except:
         st.info("연도별 데이터를 불러올 수 없습니다.")
     st.markdown('</div>', unsafe_allow_html=True)
