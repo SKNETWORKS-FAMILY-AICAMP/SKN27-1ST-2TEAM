@@ -165,10 +165,10 @@ with col_main:
         st.markdown('<div class="card"><div class="card-header">🚗 차량 정보</div>', unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
-            manufacturer = st.text_input("제작사", value=check_input.get("manufacturer", ""))
-            car_name     = st.text_input("차명",   value=check_input.get("car_name", ""))
+            manufacturer = st.text_input("제작사 *", value=check_input.get("manufacturer", ""))
+            car_name     = st.text_input("차명 *",   value=check_input.get("car_name", ""))
         with col2:
-            prod_year = st.number_input("생산연도", min_value=1990, max_value=2024,
+            prod_year = st.number_input("생산연도 *", min_value=1990, max_value=2024,
                                         value=int(check_input.get("prod_year", 2020)))
             vin = st.text_input("차대번호 (선택)", placeholder="예: KMHXX00XXXX000000")
         st.markdown('</div>', unsafe_allow_html=True)
@@ -183,17 +183,17 @@ with col_main:
             reporter_addr  = st.text_input("주소 (선택)", placeholder="시/도 시/군/구")
         st.markdown('</div>', unsafe_allow_html=True)
 
-        st.markdown('<div class="card"><div class="card-header">📋 결함 내용</div>', unsafe_allow_html=True)
-        defect_part = st.selectbox("결함 부위", [
+        st.markdown('<div class="card"><div class="card-header">📋 결함 내용 *</div>', unsafe_allow_html=True)
+        defect_part = st.selectbox("결함 부위 *", [
             "선택하세요", "엔진", "변속기", "제동장치", "조향장치", "연료장치",
             "에어백", "전기·전자장치", "차체", "기타"
         ])
         defect_symptom = st.text_area("결함 증상 *", placeholder="결함 증상을 구체적으로 입력해주세요.\n예: 주행 중 엔진이 갑자기 꺼지는 현상이 반복적으로 발생함", height=120)
-        defect_date    = st.date_input("결함 발생일")
-        defect_mileage = st.text_input("결함 발생 시 주행거리 (km)", placeholder="예: 45000")
-        accident       = st.radio("사고 발생 여부", ["없음", "있음"], horizontal=True)
+        defect_date    = st.date_input("결함 발생일 *")
+        defect_mileage = st.text_input("결함 발생 시 주행거리 (km) *", placeholder="예: 45000")
+        accident       = st.radio("사고 발생 여부 *", ["없음", "있음"], horizontal=True)
         if accident == "있음":
-            st.text_area("사고 내용", placeholder="사고 내용을 입력해주세요", height=80)
+            st.text_area("사고 내용 *", placeholder="사고 내용을 입력해주세요", height=80)
         st.markdown('</div>', unsafe_allow_html=True)
 
         is_valid = all([
