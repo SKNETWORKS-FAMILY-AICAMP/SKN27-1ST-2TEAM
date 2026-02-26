@@ -55,6 +55,43 @@
 
   - 시장 투명성 제고: 객관적인 리콜 분석 데이터를 제공함으로써 자동차 제조사의 품질 관리 및 소비자의 합리적인 차량 구매 보조.
 
+# 🚗 RecallChecker - 자동차 리콜 조회 시스템
+
+## 📁 프로젝트 구조
+
+```
+SKN27-1ST-2TEAM/
+├── main.py                        # 홈 페이지
+├── header.py                      # 공통 헤더 컴포넌트
+├── crawling.py                    # FAQ 크롤링 스크립트
+├── requirements.txt               # 패키지 목록
+├── ppt.md                         # 발표 자료
+├── README.md
+│
+├── pages/
+│   ├── analysis.py                # 리콜 데이터 분석
+│   ├── check.py                   # 리콜 대상 차량 조회
+│   ├── faq.py                     # 자주 묻는 질문
+│   └── report.py                  # 결함 신고
+│
+├── data/
+│   ├── 자동차리콜현황(2019)_v2.0.csv
+│   ├── 자동차리콜현황(2020) v3.0.csv
+│   ├── 자동차리콜현황(2021).csv
+│   ├── 자동차리콜현황(2022).csv
+│   ├── 자동차리콜현황(2023).csv
+│   └── faq.csv
+│
+├── database/                      # DB 관련 파일
+├── img/                           # 이미지 파일
+├── static/                        # 폰트 등 정적 파일
+│
+└── .streamlit/
+    └── config.toml                # Streamlit 설정
+```
+🚗 RecallChecker - 자동차 리콜 조회 시스템
+한국교통안전공단의 공공데이터를 기반으로 내 차량의 리콜 여부를 간편하게 조회하고, 결함 신고까지 한 번에 처리할 수 있는 서비스입니다.
+브랜드별·차종별 리콜 현황을 시각화하여 소비자가 더 안전하고 합리적인 차량 선택을 할 수 있도록 돕습니다.
 
 ## 💻기술스택 
 <img src="https://img.shields.io/badge/python-%233776AB.svg?&style=for-the-badge&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"> 
@@ -90,9 +127,40 @@
 * FAQ
   - 자주 묻는 질문 검색 및 조회
 
+### 시스템 아키텍처
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjQ3/MDAxNzcyMDY0Nzk0ODI5.YX8WfWni2p_oTz4VknI1LO4VndzQraSh5nJu_nJaVYsg.ZPLMTYUEuAj02QF1tRRjNTSx8r97Gp5tTP0g2hDHbYog.PNG/KakaoTalk_20260225_100325624.png?type=w966)   
+
+## ERD 설계
+#### **ERD 설명도**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNTEg/MDAxNzcyMDY0NzkzMjg5.dObo2RLd5u-MuLAf0e6GdM5RXU1AFCzoyGpM1lybL00g.CKZqIeKsa94LmAS8wRWFOtOysZFNUaNt_WJQk5OuHJ0g.PNG/KakaoTalk_20260225_160813015.png?type=w966)   
+
+* 🛠️ 주요 기능 (Key Features)
+  - 실시간 데이터 검증 (Check)
+
+    + 제조사·모델·리콜 정보를 통합하여 차량 정보의 유효성을 실시간 조회 및 검증
+
+  + 유기적 데이터 매핑 (Mapping)
+
+    + 기초 데이터와 리콜 이력을 연동하여 대상 여부를 즉각 판별하는 관계형 구조 구축
+
+  + 결함 신고 및 관리 (Insert)
+
+    + 신고자-차량-결함 정보를 연결하여 체계적인 리포트 생성 및 이력 저장
+
+#### **실제 ERD**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTQ4/MDAxNzcyMDczNjY0MTk1.T-0MG4egCv6idAnJUhzKg1gEU5FEJ3RZ2TyrpBtMPdgg.wm2Jk_haDjUv45E_358xQagu96C68mgWH3MPIxm8hoQg.PNG/KakaoTalk_20260226_113855868.png?type=w966)
+
+    리콜리스트: manufacturers(회사),  
+    vehicle_models(차명),recall_history
+리콜리스트를 정확하게 표출하기 위함과 유지보수까지 생각해서 
+짠 테이블입니다. 회사와 차명이 추가될시 각 테이블에 입력하면 되고 
+그 이후 해당 회사의 차에 대한 리콜리스트를 추가하는방법으로 
+유지보수관리를 잘 할 수 있습니다.
+vehicles(차량정보 입력), reporters(신고자정보 입력),defect_reports(결합내용) 
+입력를 하여 데이터를 insert를 할수있습니다.
 
 
-## 와이어프레임 
+## 화면구성 
 #### 메인화면
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTU2/MDAxNzcyMDY0NzUxODU5.hyJt8xUT0TfWqrL2S2VymkyMB4vug-6vzwWpBzm45gsg.u80_4y8IkYyDPiZjQZV9aamkKVDyyN29gpAiOHprK14g.PNG/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png?type=w966)
 
@@ -148,36 +216,33 @@
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjMw/MDAxNzcyMDY0NzkxMTk3.7Ki6vnkJFpKuaA4RnfQqqBk0LFtL8sxV7mqr4zppoqUg.0qpV4rFlECeLf01f8Z8RNYDDmeYi9bLdAOFc_9R7A4Ag.PNG/screencapture-localhost-8501-report-2026-02-26-09_06_06.png?type=w966)   
 
 결함신고 완료 페이지 입니다 결함신고가 완료된것을 확인할 수 있습니다.
- 
-
-## ERD
-#### **ERD 설명도**
-![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNTEg/MDAxNzcyMDY0NzkzMjg5.dObo2RLd5u-MuLAf0e6GdM5RXU1AFCzoyGpM1lybL00g.CKZqIeKsa94LmAS8wRWFOtOysZFNUaNt_WJQk5OuHJ0g.PNG/KakaoTalk_20260225_160813015.png?type=w966)   
-
-* 🛠️ 주요 기능 (Key Features)
-  - 실시간 데이터 검증 (Check)
-
-    + 제조사·모델·리콜 정보를 통합하여 차량 정보의 유효성을 실시간 조회 및 검증
-
-  + 유기적 데이터 매핑 (Mapping)
-
-    + 기초 데이터와 리콜 이력을 연동하여 대상 여부를 즉각 판별하는 관계형 구조 구축
-
-  + 결함 신고 및 관리 (Insert)
-
-    + 신고자-차량-결함 정보를 연결하여 체계적인 리포트 생성 및 이력 저장
-
-#### **실제 ERD**
-![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTQ4/MDAxNzcyMDczNjY0MTk1.T-0MG4egCv6idAnJUhzKg1gEU5FEJ3RZ2TyrpBtMPdgg.wm2Jk_haDjUv45E_358xQagu96C68mgWH3MPIxm8hoQg.PNG/KakaoTalk_20260226_113855868.png?type=w966)   
-
-
-### 시스템 아키텍처
- * ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjQ3/MDAxNzcyMDY0Nzk0ODI5.YX8WfWni2p_oTz4VknI1LO4VndzQraSh5nJu_nJaVYsg.ZPLMTYUEuAj02QF1tRRjNTSx8r97Gp5tTP0g2hDHbYog.PNG/KakaoTalk_20260225_100325624.png?type=w966)   
 
 
 ## 인용 자료
  [국토교통부 산하 한국교통안전공단 자동차 리콜 센터](https://www.car.go.kr/rs/faq/list.do)   
 [공공데이터 포털](https://www.data.go.kr/)   
 
+## 프로젝트 회고
+* **임예은:**  
+프로젝트 기간이 짧다보니, 임팩트 있는 주제가 필요했는데, 리콜 차량에 대한 주제가 나와 프로젝트를 잘 완성할 수 있었습니다.
+프로젝트를 만드는 것에 있어서 기획은 80% 이상의 중요도를 차지한다고 생각합니다. 이슈를 알고, 트랜드를 잘 읽는 개발자가 되고 싶습니다.
+또한 다음 프로젝트에서는 개발 지식을 잘 사용하여 개발에 임하고 싶습니다.
 
-  
+* **이재건:**  
+표출하는 데이터를 csv파일에서 db로 전이 하면서 표출했던 컬럼이름이 달라져서 
+이야기 하면서 고쳐나아가면서 모두가 원하는 데이터를 표출할수있었습니다.
+
+* **오주희:**  
+처음 접해보는 것들이 많아 그만큼 걱정도 많았지만, 수업시간에 다뤘던 많은 내용을 복습하고 실제 구현을 해 볼 수 있어 많은 경험을 얻을 수 있었습니다. 이를 통해 이해가 되지 않았던 부분들도 팀원들과 같이 이해하고 해결 할 수 있는 시간이 되었던 것 같습니다
+
+* **이성진:**  
+지식이 부족하고 경험이 없다보니 팀에게 도움을 많이 못 준게 아쉬웠다. 첫 미니프로젝트이고 아직은 부족하지만, 계속 공부하다보면 많은 역할을 할 수 있을 것 같다. 그리고 데이터를 수집하고 처리하는 과정에서 생각보다 많은 데이터가 필요하고 그 데이터를 분류하는 능력이 중요하다는 것을 느꼈다. 무엇보다 주제를 잘 선정하고 이에 필요한 데이터를 얼마나 잘 수집하느냐에 따라 결과가 달라질 수 있다는 것을 느꼈다.
+
+* **권환성:**  
+공부의 필요성이 느껴졌다. 전공자들이 진행하는것들을 부수적으로 도우는 일들을 하며 배워보려고 했으나 아직까지 어려운점이 너무 많았던건 같다,
+다음에는 더 많은 지식을 갖게되어 프로젝트에서 더 많은 역할을 해보고싶다
+
+* **주연중:**  
+
+  팀에 도움이 되고자 노력하였다고 생각합니다. 이번 프로젝트에서 경험한것을 바탕으로 다음 그다음 마지막으로 최종 프로젝트까지 1인분 할수있는 밑거름으로 삼을수있게 하겠습니다 같이 노력해주신 전공자, 비 전공자분들 모두 수고 많으셨습니다 리콜체크해조 화이팅!
+
