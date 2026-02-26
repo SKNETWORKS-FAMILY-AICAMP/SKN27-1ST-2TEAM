@@ -466,7 +466,7 @@ style: |
   <div class="bar">소비자 안전권 확보(사회적 필요성)</div>
   <div class="body">
     결함 사례가 복잡화됨에 따라 리콜 이력을 <b>투명하게 공개</b>하고  
-    사용자 <b>접근성</b>을 높여야 할 사회적 필요성이 증가했습니다.
+    사용자 <b>접근성</b>을 높여야 할 사회적 필요성이 증가
   </div>
 </div>
 
@@ -557,11 +557,13 @@ style: |
 
 ---
 
+
 <!-- class: banded -->
 # 02_3. 리콜 데이터 분석
 
-<div class="grid-2">
-  <div class="card">
+<div class="grid-2 stretch">
+
+  <div class="card tall-360">
     <div class="bar">분석 목적</div>
     <div class="body">
       <ul>
@@ -575,10 +577,9 @@ style: |
     </div>
   </div>
 
-  <div class="imgbox" style="height:280px; margin-bottom:0;">
+  <div class="imgbox tall-360" style="margin-bottom:0;">
     <img class="contain-shot" src="./img/analysis_page.png" />
   </div>
-</div>
 
 ---
 
@@ -691,9 +692,7 @@ style: |
 <!-- class: banded -->
 # 05_1. 메인 페이지
 
-<div class="imgbox" style="height:240px;">
-  <img class="contain-shot" src="./img/main_page.png" />
-</div>
+<div class="grid-2">
 
 <div class="card">
   <div class="bar">디자인 의도</div>
@@ -707,6 +706,10 @@ style: |
   </div>
 </div>
 
+  <div class="imgbox tall-360" style="margin-bottom:0;">
+    <img class="contain-shot" src="./img/main_page.png" />
+  </div>
+
 ---
 
 <!-- class: banded -->
@@ -714,10 +717,6 @@ style: |
 
 
 <div class="grid-2">
-
-<div class="imgbox" style="height:240px;">
-  <img class="contain-shot" src="./img/SELECT_page.png" />
-</div>
 
 <div class="card">
   <div class="bar">화면 구성</div>
@@ -731,6 +730,10 @@ style: |
   </div>
 </div>
 
+<div class="imgbox" style="height:240px;">
+  <img class="contain-shot" src="./img/SELECT_page.png" />
+</div>
+
 ---
 
 
@@ -739,7 +742,7 @@ style: |
 
 <div class="grid-2">
   <div class="card">
-    <div class="bar">구성(파일 반영)</div>
+    <div class="bar">구성</div>
     <div class="body">
       <ul>
         <li><b>상단</b>: KPI 카드(전체/국내/해외 리콜 건수)</li>
@@ -751,9 +754,11 @@ style: |
     </div>
   </div>
 
-  <div class="imgbox" style="height:320px; margin-bottom:0;">
+  <div class="imgbox tall-360" style="margin-bottom:0;">
     <img class="contain-shot" src="./img/analysis_page.png" />
   </div>
+
+  
 </div>
 
 ---
