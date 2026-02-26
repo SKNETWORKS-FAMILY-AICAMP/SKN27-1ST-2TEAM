@@ -131,7 +131,7 @@ SKN27-1ST-2TEAM/
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjQ3/MDAxNzcyMDY0Nzk0ODI5.YX8WfWni2p_oTz4VknI1LO4VndzQraSh5nJu_nJaVYsg.ZPLMTYUEuAj02QF1tRRjNTSx8r97Gp5tTP0g2hDHbYog.PNG/KakaoTalk_20260225_100325624.png?type=w966)   
 
 ## ERD 설계
-#### **ERD 설명도**
+#### **설명도**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNTEg/MDAxNzcyMDY0NzkzMjg5.dObo2RLd5u-MuLAf0e6GdM5RXU1AFCzoyGpM1lybL00g.CKZqIeKsa94LmAS8wRWFOtOysZFNUaNt_WJQk5OuHJ0g.PNG/KakaoTalk_20260225_160813015.png?type=w966)   
 
 * 🛠️ 주요 기능 (Key Features)
@@ -161,62 +161,67 @@ vehicles(차량정보 입력), reporters(신고자정보 입력),defect_reports(
 
 
 ## 화면구성 
-#### 메인화면
+### **1. 메인화면**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTU2/MDAxNzcyMDY0NzUxODU5.hyJt8xUT0TfWqrL2S2VymkyMB4vug-6vzwWpBzm45gsg.u80_4y8IkYyDPiZjQZV9aamkKVDyyN29gpAiOHprK14g.PNG/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png?type=w966)
 
-메인화면 입니다 우측 상단에 있는 버튼으로 각 서비스로 이동할수 있습니다.
+* 메인화면 입니다 우측 상단에 있는 버튼으로 각 서비스로 이동할수 있습니다.
 
-#### 1. **리콜조회 (리콜대상 아닌경우)**
-![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjI2/MDAxNzcyMDY0NzY2NzUw.5_evFGAD66HrOFLt5UDg7wlvqJzKE3vXmp0BDt1kyocg.GC8fG982-RbZ6ZH3WJkWi22B9gbX8Q7PM-R0wC3gJeMg.PNG/screencapture-localhost-8501-check-2026-02-26-09_01_56.png?type=w966)   
- 
-   리콜 조회 화면입니다 리콜대상이 아닌경우 "리콜 대상이 아닙니다" 메시지가 출력됩니다. 
+### **2.리콜조회**
 
-#### **1-1. 리콜조회 (리콜대상인 경우)**
+#### **2-1. 조회 페이지 (리콜대상인 경우)**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTg2/MDAxNzcyMDY0NzcwOTcz.F-TEnPsv5NHpcLu8YHavggx3uXwQdv_9Vlo5BuzJ5Uwg.lPLi6hiawXUxU5_i4DAA8ORYJB-phf8MsS15kxiEYdYg.PNG/screencapture-localhost-8501-check-2026-02-26-09_02_19.png?type=w966)   
 
-
-   리콜 조회 화면입니다 리콜대상일 경우 "리콜 대상 차량입니다" 메시지와 리콜사유, 개수가 출력됩니다.  
-해당 차량의 리콜 현황에서 데이터를 조회 할 수 있습니다.   
+  * 리콜 조회 화면입니다 리콜대상일 경우 "리콜 대상 차량입니다"  
+     메시지와 리콜사유, 개수가 출력됩니다.  
+     해당 차량의 리콜 현황에서 데이터를 조회 할 수 있습니다.   
 하단의 결함 신고하기 버튼을 클릭시 결함 신고 페이지로 연결됩니다.
 
-#### **2. 국산차 리콜 분석**
+#### **2-2. 조회 페이지 (리콜대상 아닌경우)**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjI2/MDAxNzcyMDY0NzY2NzUw.5_evFGAD66HrOFLt5UDg7wlvqJzKE3vXmp0BDt1kyocg.GC8fG982-RbZ6ZH3WJkWi22B9gbX8Q7PM-R0wC3gJeMg.PNG/screencapture-localhost-8501-check-2026-02-26-09_01_56.png?type=w966)   
+ 
+  * 리콜 조회 화면입니다 리콜대상이 아닌경우 "리콜 대상이 아닙니다" 메시지가 출력됩니다. 
+
+### **3. 대시보드**
+
+#### **3-1. 국내 브랜드 리콜 데이터 분석**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjk0/MDAxNzcyMDY0Nzc1MjA5.NUBh3_3eWrQZSBYHHb0cKZd5hFCGtVZIlWeCqPgI_dEg.-8mSznFjDCyaHp1IsOqXQO1tzuc_0cEzXjLNLAsUQCAg.PNG/screencapture-localhost-8501-analysis-2026-02-26-09_03_06.png?type=w966)   
 
 
-   국산차 리콜 분석 페이지 입니다 여기서 국산차 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
+  * 국내 브랜드 리콜 분석 페이지 입니다 여기서 국내 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
 
-#### **2-1. 외산차 리콜 분석**
+#### **3-2. 해외 브랜드 리콜 데이터 분석**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjEx/MDAxNzcyMDY0Nzc4NTY1.Z-upGuMbH4bdFvj_MfIa2udPlIkLphQVfuu6BWC27sEg.pFMpm-ypxZdeXzcKNJXc8jPKwGkkQvJNlxToI9BCDaUg.PNG/screencapture-localhost-8501-analysis-2026-02-26-09_03_40.png?type=w966)   
 
 
-   외산차 리콜 분석 페이지 입니다 여기서 외산차 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
+  * 해외 브랜드 리콜 분석 페이지 입니다 여기서 해외 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
 
-#### **3. FAQ**
-![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjcz/MDAxNzcyMDY0NzgxMTQ5.M3cGjq07ZeAp0rzAVbeH8to3mKwXtDWvML1uh-zyHlEg.gQbXvkKDVUmoG0mKX1yhs-lWISrTjEqLoP3x9tlJ5Ugg.PNG/screencapture-localhost-8501-faq-2026-02-26-09_04_21.png?type=w966)
+### 4. **결함신고**
 
-  FAQ 페이지 입니다 자주 묻는 질문의 검색 및 열람이 가능합니다.   
-
-#### **4. 결함신고 1**
+#### **4-1. 안내 페이지**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfOTcg/MDAxNzcyMDY0Nzg1MDM4.oHx4OgB9X2Ru0CJ-y0mPdsjsKSX5AoCjyrcNnft8DPIg.cgGAz-rEUb2zeWKI-y8_Xor68h-YL_n5CgCI4NTMQiQg.PNG/screencapture-localhost-8501-report-2026-02-26-09_04_30.png?type=w966)   
 
-  결함신고 페이지 입니다 주의사항을 확인하고 신고를 계속 진행할 수 있습니다.
+  * 결함신고 페이지 입니다 주의사항을 확인하고 신고를 계속 진행할 수 있습니다.
 
-#### **4-1. 결함신고2**
+#### **4-2. 동의 페이지**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNDAg/MDAxNzcyMDY0Nzg2ODQx.CpCMqJHimGZXCFnPPmnwAR4jITw2vQS1OkTHlr03sgsg.h7pc_Z9KwO5uRT-dMhHoEZlDkBniq9Gx5OeCpQ1bzMgg.PNG/screencapture-localhost-8501-report-2026-02-26-09_04_42.png?type=w966)   
 
-  약관동의 페이지 입니다 약관정보를 확인하고 동의하여 진행하거나 신고를 그만둘수있습니다.
+  * 약관동의 페이지 입니다 약관정보를 확인하고 동의하여 진행하거나 신고를 그만둘수있습니다.
 
 
-#### **4-2. 결함신고3**
+#### **4-3. 입력 페이지**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMiAg/MDAxNzcyMDY0Nzg4OTMy.s24zeE9ntp8nYg63uf2oakq0ep0mUwhztskRrgYuqVQg.JpzRYVgXvlaGywc7LJB5grPvzO9AKC7Ve8ZflybBAqkg.PNG/screencapture-localhost-8501-report-2026-02-26-09_05_53.png?type=w966)   
 
-  결함신고 페이지 입니다 제공된 양식을 활용해 신고를 확정할수 있습니다.
+  * 결함신고 페이지 입니다 제공된 양식을 활용해 신고를 확정할수 있습니다.
 
-#### **4-3. 결함신고 4**
+#### **4-4. 접수 페이지**
 ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjMw/MDAxNzcyMDY0NzkxMTk3.7Ki6vnkJFpKuaA4RnfQqqBk0LFtL8sxV7mqr4zppoqUg.0qpV4rFlECeLf01f8Z8RNYDDmeYi9bLdAOFc_9R7A4Ag.PNG/screencapture-localhost-8501-report-2026-02-26-09_06_06.png?type=w966)   
 
-결함신고 완료 페이지 입니다 결함신고가 완료된것을 확인할 수 있습니다.
+* 결함신고 완료 페이지 입니다 결함신고가 완료된것을 확인할 수 있습니다.
 
+#### **5. FAQ**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjcz/MDAxNzcyMDY0NzgxMTQ5.M3cGjq07ZeAp0rzAVbeH8to3mKwXtDWvML1uh-zyHlEg.gQbXvkKDVUmoG0mKX1yhs-lWISrTjEqLoP3x9tlJ5Ugg.PNG/screencapture-localhost-8501-faq-2026-02-26-09_04_21.png?type=w966)
+
+  * FAQ 페이지 입니다 자주 묻는 질문의 검색 및 열람이 가능합니다
 
 ## 인용 자료
  [국토교통부 산하 한국교통안전공단 자동차 리콜 센터](https://www.car.go.kr/rs/faq/list.do)   
@@ -243,6 +248,5 @@ vehicles(차량정보 입력), reporters(신고자정보 입력),defect_reports(
 다음에는 더 많은 지식을 갖게되어 프로젝트에서 더 많은 역할을 해보고싶다
 
 * **주연중:**  
-
-  팀에 도움이 되고자 노력하였다고 생각합니다. 이번 프로젝트에서 경험한것을 바탕으로 다음 그다음 마지막으로 최종 프로젝트까지 1인분 할수있는 밑거름으로 삼을수있게 하겠습니다 같이 노력해주신 전공자, 비 전공자분들 모두 수고 많으셨습니다 리콜체크해조 화이팅!
+  팀에 도움이 되고자 노력하였다고 생각합니다. 이번 프로젝트에서 경험한것을 바탕으로 다음 그다음 마지막으로 최종 프로젝트까지 1인분 할수있는 밑거름으로 삼을수있게 하겠습니다 같이 노력해주신 전공자 비 전공자분들 모두 수고 많으셨습니다 리콜체크해조 화이팅!
 
