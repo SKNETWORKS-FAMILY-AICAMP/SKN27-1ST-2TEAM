@@ -123,7 +123,6 @@ with col_main:
                 # recall_start_date가 연도만 가져오고 있으므로 그대로 출력하거나 보완
                 st.markdown(f"""
                 <div class="recall-card">
-                    <h4>🚨 리콜 분야: {row.get('component', '정보 없음')}</h4>
                     <p><strong>내용:</strong> {row.get('recall_reason', '정보 없음')}</p>
                     <div class="recall-meta">🔢 리콜 번호: {row.get('recall_number', '정보 없음')} | 📅 리콜 시작 연도: {row.get('recall_start_date')}</div>
                 </div>
