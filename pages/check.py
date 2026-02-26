@@ -1,5 +1,10 @@
 import streamlit as st
 import pandas as pd
+from database.connection import (
+    get_recall_select_data,
+    get_recall_history_data,
+    get_recall_list_data,
+)
 
 #헤더 페이지 추가 
 from header import render_header
@@ -42,36 +47,8 @@ with col_main:
     </style>
     """, unsafe_allow_html=True)
 
-    # ── 데이터 로드 ──
-    @st.cache_data
-    def load_recall_data():
-        import glob
-        files = sorted(glob.glob("data/*.csv"))
-        dfs = []
-        for f in files:
-            for enc in ["cp949", "utf-8", "euc-kr"]:
-                try:
-                    tmp = pd.read_csv(f, encoding=enc)
-                    dfs.append(tmp)
-                    break
-                except:
-                    continue
-        if dfs:
-            df = pd.concat(dfs, ignore_index=True)
-            df.columns = df.columns.str.strip()
-            df = df.drop_duplicates()
-        else:
-            df = pd.DataFrame({
-                "제작자": ["현대", "기아", "BMW"],
-                "차명":   ["쏘나타", "K5", "520i"],
-                "생산기간(부터)": ["20180101","20190101","20200101"],
-                "생산기간(까지)": ["20211231","20221231","20231231"],
-                "리콜개시일": ["20220315","20230101","20230601"],
-                "리콜사유": ["엔진 결함","브레이크 불량","냉각수 누수"]
-            })
-        return df
-
-    df = load_recall_data()
+    # DB 연결 회사 - 차량 조회
+    df = get_recall_select_data()
 
     # ── 헤더 ──
     st.markdown("""
@@ -85,13 +62,13 @@ with col_main:
     # ── 입력 폼 ──
     st.markdown('<div class="card"><div class="card-header">🚗 차량 정보 입력</div>', unsafe_allow_html=True)
 
-    manufacturers = sorted(df["제작자"].dropna().unique().tolist())
+    manufacturers = sorted(df["manufacturer_name"].dropna().unique().tolist())
     col1, col2 = st.columns(2)
     with col1:
         manufacturer = st.selectbox("제작사", ["선택하세요"] + manufacturers)
     with col2:
         if manufacturer != "선택하세요":
-            car_names = sorted(df[df["제작자"] == manufacturer]["차명"].dropna().unique().tolist())
+            car_names = sorted(df[df["manufacturer_name"] == manufacturer]["model_name"].dropna().unique().tolist())
         else:
             car_names = []
         car_name = st.selectbox("차명", ["선택하세요"] + car_names, disabled=(manufacturer == "선택하세요"))
@@ -103,7 +80,7 @@ with col_main:
     is_valid = manufacturer != "선택하세요" and car_name != "선택하세요"
 
     if st.button("🔍 리콜 조회하기", use_container_width=True, disabled=not is_valid):
-        st.session_state["check_input"] = {
+        st.session_state["check_params"] = {
             "manufacturer": manufacturer,
             "car_name": car_name,
             "prod_year": prod_year
@@ -111,65 +88,56 @@ with col_main:
         st.rerun()
 
     # ── 결과 표시 ──
-    if "check_input" in st.session_state:
-        inp = st.session_state["check_input"]
-        prod_date = int(f"{inp['prod_year']}0101")
+    if "check_params" in st.session_state:
+        params = st.session_state["check_params"]
+        target_mfg = params["manufacturer"]
+        target_model = params["car_name"]
+        target_year = params["prod_year"]
 
-        # 리콜 대상 필터링
-        filtered = df[
-            (df["제작자"] == inp["manufacturer"]) &
-            (df["차명"] == inp["car_name"])
-        ].copy()
-
-        try:
-            # 날짜 형식: 2021-01-01 → datetime 변환 후 비교
-            filtered["생산기간(부터)"] = pd.to_datetime(filtered["생산기간(부터)"], errors="coerce")
-            filtered["생산기간(까지)"] = pd.to_datetime(filtered["생산기간(까지)"], errors="coerce")
-            prod_dt = pd.Timestamp(f"{inp['prod_year']}-01-01")
-            prod_dt_end = pd.Timestamp(f"{inp['prod_year']}-12-31")
-            recalls = filtered[
-                (filtered["생산기간(부터)"] <= prod_dt_end) &
-                (filtered["생산기간(까지)"] >= prod_dt)
-            ]
-        except Exception as e:
-            st.error(f"필터링 오류: {e}")
-            recalls = pd.DataFrame()
+        # DB에서 리콜 내역 가져오기
+        recalls = get_recall_history_data(target_mfg, target_model, target_year)
 
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown(f"### 📋 {inp['manufacturer']} {inp['car_name']} {inp['prod_year']}년식 조회 결과")
+        st.markdown(f"### 📋 {target_mfg} {target_model} ({target_year}년식) 조회 결과")
 
-        # 디버깅: 원본 데이터 확인
-        with st.expander("🔧 해당 차량의 리콜 현황 "):
-            # st.markdown(f"제작사: {inp['manufacturer']}  \n차명: {inp['car_name']}  \n생산연도: {inp['prod_year']}")
-            # st.write(f"prod_date: {prod_date}")
-            raw = df[(df["제작자"] == inp["manufacturer"]) & (df["차명"] == inp["car_name"])]
-            st.write(f"동일 차 명 데이터 {len(raw)}건")
-            if len(raw) > 0:
-                st.dataframe(raw[["제작자","차명","생산기간(부터)","생산기간(까지)","리콜개시일"]].head(5))
+        recalls_list = get_recall_list_data(target_mfg, target_model)
+        
+        # 해당 모델 전체 리콜 리스트
+        with st.expander(f"📚 {target_model} 모델의 전체 리콜 이력 (총 {len(recalls_list)}건)"):
+            if not recalls_list.empty:
+                st.dataframe(
+                    recalls_list[["recall_start_date", "recall_reason"]],
+                    column_config={
+                        "recall_start_date": "리콜시작연도",
+                        "recall_reason": "리콜사유"
+                    },
+                    use_container_width=True,
+                    hide_index=True
+                )
+            else:
+                st.info("등록된 리콜 이력이 없습니다.")
 
-        if len(recalls) > 0:
+        if not recalls.empty:
             st.error(f"⚠️ **리콜 대상 차량입니다!** 총 {len(recalls)}건의 리콜이 확인되었습니다.")
             for _, row in recalls.iterrows():
-                recall_date = str(row.get("리콜개시일", ""))
-                if len(recall_date) == 8:
-                    recall_date = f"{recall_date[:4]}.{recall_date[4:6]}.{recall_date[6:]}"
+                # recall_start_date가 연도만 가져오고 있으므로 그대로 출력하거나 보완
                 st.markdown(f"""
                 <div class="recall-card">
-                    <h4>🚨 리콜 사유</h4>
-                    <p>{row.get('리콜사유', '정보 없음')}</p>
-                    <div class="recall-meta">📅 리콜 개시일: {recall_date}</div>
+                    <h4>🚨 리콜 분야: {row.get('component', '정보 없음')}</h4>
+                    <p><strong>내용:</strong> {row.get('recall_reason', '정보 없음')}</p>
+                    <div class="recall-meta">🔢 리콜 번호: {row.get('recall_number', '정보 없음')} | 📅 리콜 시작 연도: {row.get('recall_start_date')}</div>
                 </div>
                 """, unsafe_allow_html=True)
+            
             st.warning("👉 가까운 서비스센터 또는 제작사에 연락하여 리콜 시정을 받으세요.")
-            st.markdown("<br>", unsafe_allow_html=True)
             if st.button("🚨 결함신고 하기", type="primary", use_container_width=True):
                 st.switch_page("pages/report.py")
         else:
+            # 리콜 내역이 없는 경우
             st.markdown("""
-            <div class="safe-card">
-                <h3>✅ 리콜 대상이 아닙니다</h3>
-                <p>해당 차량은 현재 등록된 리콜 대상에 해당하지 않습니다.<br>
-                데이터는 2023년 12월 기준입니다.</p>
+            <div class="safe-card" style="text-align: center; padding: 30px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 15px;">
+                <h3 style="color: #16a34a; margin-bottom: 10px;">✅ 리콜 대상이 아닙니다</h3>
+                <p style="color: #166534;">해당 차량은 현재 등록된 리콜 내역이 없습니다.</p>
             </div>
             """, unsafe_allow_html=True)
 

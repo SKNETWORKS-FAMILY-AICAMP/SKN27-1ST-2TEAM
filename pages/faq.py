@@ -1,6 +1,5 @@
 import streamlit as st
-import pandas as pd
-
+from database.connection import get_faq_data
 
 st.set_page_config(
     page_title="FAQ - 리콜체커",
@@ -68,23 +67,8 @@ with col_main:
     </style>
     """, unsafe_allow_html=True)
 
-    # ── 데이터 로드 ──
-    @st.cache_data
-    def load_faq():
-        for enc in ["utf-8", "cp949", "euc-kr"]:
-            try:
-                df = pd.read_csv("data/faq.csv", encoding=enc)
-                return df
-            except:
-                continue
-        # 파일 없을 때 샘플
-        return pd.DataFrame({
-            "페이지": [1],
-            "질문": ["자동차 결함을 신고하고 싶은데 어떻게 하나요?"],
-            "답변": ["자동차결함신고센터(www.car.go.kr)를 방문하셔서 신고하실 수 있습니다."]
-        })
-
-    df = load_faq()
+    # 이제 위에서 만든 함수로 데이터를 가져옵니다
+    df = get_faq_data()
 
     # ── 헤더 ──
     st.markdown("""
@@ -110,14 +94,20 @@ with col_main:
 
     st.markdown(f'<div class="faq-count">전체 <strong>{len(filtered)}건</strong></div>', unsafe_allow_html=True)
 
+    # ── 화면 출력 부분 ──
     if len(filtered) == 0:
         st.info("검색 결과가 없습니다. 다른 키워드로 검색해보세요.")
     else:
-        for i, (_, row) in enumerate(filtered.iterrows()):
-            question = str(row.get("질문", "")).strip()
-            answer   = str(row.get("답변", "")).strip()
-            answer   = answer.replace("\\n", "\n").replace(" \\n ", "\n")
+        # row.iterrows()를 쓰면 인덱스와 행을 함께 가져옵니다.
+        for i, row in filtered.iterrows():
+            # DB 컬럼명인 'question'과 'answer'를 사용하세요!
+            answer= str(row.get("answer", "")).strip()
+            question  = str(row.get("question", "")).strip()
+            
+            # 줄바꿈 및 이스케이프 문자 처리
+            answer = answer.replace("\\n", "\n").replace(" \n ", "\n")
 
+            # 환상님이 만드신 예쁜 expander UI에 데이터 담기
             with st.expander(f"Q.  {question}"):
                 st.markdown(f"""
                 <div class="faq-a">
