@@ -461,7 +461,8 @@ style: |
   </div>
 </div>
 
-<div class="card" style="margin-top:18px;">
+<br/>
+<div class="card" style="margin-top:18px;" >
   <div class="bar">소비자 안전권 확보(사회적 필요성)</div>
   <div class="body">
     결함 사례가 복잡화됨에 따라 리콜 이력을 <b>투명하게 공개</b>하고  
@@ -470,6 +471,19 @@ style: |
 </div>
 
 ---
+
+<!-- class: banded -->
+# 01_1. wbs
+
+
+  <div class="imgbox tall-360" style="margin-bottom:0;">
+    <img class="contain-shot" src="./img/wbs.png" />
+  </div>
+
+
+---
+
+
 
 <!-- class: banded -->
 # 02. 요구사항(기능) 요약
@@ -501,8 +515,8 @@ style: |
 <!-- class: banded -->
 # 02_1. 리콜 대상 차량 조회
 
-<div class="imgbox" style="height:280px;">
-  <img class="contain-shot" src="./img/SELECT_page.png" />
+<div class="imgbox" style="height:180px;">
+  <img class="contain-shot" src="./img/SELECT2_page.png" />
 </div>
 
 <div class="card">
@@ -698,6 +712,9 @@ style: |
 <!-- class: banded -->
 # 05_2. 리콜 조회 시스템 페이지
 
+
+<div class="grid-2">
+
 <div class="imgbox" style="height:240px;">
   <img class="contain-shot" src="./img/SELECT_page.png" />
 </div>
@@ -715,6 +732,7 @@ style: |
 </div>
 
 ---
+
 
 <!-- class: banded -->
 # 05_3. 리콜 데이터 분석 페이지
