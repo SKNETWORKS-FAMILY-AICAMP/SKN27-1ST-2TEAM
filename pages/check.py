@@ -100,14 +100,17 @@ with col_main:
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown(f"### 📋 {target_mfg} {target_model} ({target_year}년식) 조회 결과")
 
-        recalls_list = get_recall_list_data(target_mfg, target_model)
-        
+        # DB에서 리콜 리스트 가져오기
+        recalls_list = get_recall_list_data(target_mfg, target_model, target_year)
+
         # 해당 모델 전체 리콜 리스트
         with st.expander(f"📚 {target_model} 모델의 전체 리콜 이력 (총 {len(recalls_list)}건)"):
             if not recalls_list.empty:
                 st.dataframe(
-                    recalls_list[["recall_start_date", "recall_reason"]],
+                    recalls_list[["start_date","end_date","recall_start_date", "recall_reason"]],
                     column_config={
+                        "start_date":"생산시작일",
+                        "end_date":"생산종료일",
                         "recall_start_date": "리콜시작연도",
                         "recall_reason": "리콜사유"
                     },
@@ -117,14 +120,14 @@ with col_main:
             else:
                 st.info("등록된 리콜 이력이 없습니다.")
 
-        if not recalls.empty:
-            st.error(f"⚠️ **리콜 대상 차량입니다!** 총 {len(recalls)}건의 리콜이 확인되었습니다.")
-            for _, row in recalls.iterrows():
+        if not recalls_list.empty:
+            st.error(f"⚠️ **리콜 대상 차량입니다!** 총 {len(recalls_list)}건의 리콜이 확인되었습니다.")
+            for _, row in recalls_list.iterrows():
                 # recall_start_date가 연도만 가져오고 있으므로 그대로 출력하거나 보완
                 st.markdown(f"""
                 <div class="recall-card">
                     <p><strong>내용:</strong> {row.get('recall_reason', '정보 없음')}</p>
-                    <div class="recall-meta">🔢 리콜 번호: {row.get('recall_number', '정보 없음')} | 📅 리콜 시작 연도: {row.get('recall_start_date')}</div>
+                    <div class="recall-meta"> 📅 생산시작일 : {row.get('start_date')} 📅 생산종료일 : {row.get('end_date')}  📅 리콜 시작 연도: {row.get('recall_start_date')}</div>
                 </div>
                 """, unsafe_allow_html=True)
             

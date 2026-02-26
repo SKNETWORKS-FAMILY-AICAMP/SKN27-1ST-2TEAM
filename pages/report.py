@@ -160,7 +160,7 @@ with col_main:
         st.markdown('<div class="step-badge">STEP 3 / 3 &nbsp; 결함신고 등록</div>', unsafe_allow_html=True)
 
         # 조회 결과에서 차량 정보 자동 입력
-        check_input = st.session_state.get("check_input", {})
+        check_input = st.session_state.get("check_params", {})
 
         st.markdown('<div class="card"><div class="card-header">🚗 차량 정보</div>', unsafe_allow_html=True)
         col1, col2 = st.columns(2)

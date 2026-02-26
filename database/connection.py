@@ -95,11 +95,10 @@ def get_recall_history_data(name_ko, model_name, recall_start_date):
 
 # 리콜 차량 리스트 조회
 @st.cache_data(ttl=600)
-def get_recall_list_data(name_ko, model_name):
+def get_recall_list_data(name_ko, model_name, target_year):
     """안전하게 파라미터를 바인딩하여 리콜 내역을 가져옵니다."""
     conn = get_db_connection()
     
-    # 변수 자리에는 %s (또는 DB 드라이버에 따라 ?)를 사용합니다.
     query = """
         SELECT 
             m.name_ko AS manufacturer_name,
@@ -107,6 +106,8 @@ def get_recall_list_data(name_ko, model_name):
             r.recall_number,
             r.component,
             r.description AS recall_reason,
+            r.target_production_start_date AS start_date,
+            r.target_production_end_date AS end_date,
             YEAR(r.recall_start_date) AS recall_start_date
         FROM 
             recall_history r
@@ -116,13 +117,18 @@ def get_recall_list_data(name_ko, model_name):
             manufacturers m ON v.manufacturer_id = m.manufacturer_id
         WHERE 
             m.name_ko = %s
-            AND v.model_name = %s;
+            AND v.model_name = %s
+            AND %s BETWEEN YEAR(r.target_production_start_date) AND YEAR(r.target_production_end_date);
     """
     
     try:
-        # params 인자에 튜플 형태로 변수를 넘겨주면 판다스가 안전하게 처리합니다.
-        df = pd.read_sql(query, conn, params=(name_ko, model_name))
+        # params에 target_year를 추가하여 총 3개의 인자를 넘겨줍니다.
+        # 순서가 SQL 쿼리의 %s 순서와 일치해야 합니다.
+        df = pd.read_sql(query, conn, params=(name_ko, model_name, target_year))
         return df
     except Exception as e:
         st.error(f"데이터 조회 중 오류가 발생했습니다: {e}")
         return pd.DataFrame()
+    finally:
+        # 데이터베이스 연결을 닫아주는 것이 좋습니다 (세션 관리)
+        conn.close()
