@@ -86,8 +86,8 @@ with col_main:
     # ── 필터링 ──
     if search.strip():
         filtered = df[
-            df["질문"].str.contains(search, na=False) |
-            df["답변"].str.contains(search, na=False)
+            df["question"].str.contains(search, na=False) |
+            df["answer"].str.contains(search, na=False)
         ]
     else:
         filtered = df
