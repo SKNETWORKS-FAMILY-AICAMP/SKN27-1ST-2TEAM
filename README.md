@@ -168,7 +168,7 @@
     + 신고자-차량-결함 정보를 연결하여 체계적인 리포트 생성 및 이력 저장
 
 #### **실제 ERD**
-![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMzAg/MDAxNzcyMDY0Nzk2MjQ0.kM8N-5ZpxOp81Iws-xpclMloM2TCi4pOhCrTQaoaisEg.sW7X3PX-e1xoE6PG5TlLrI3quBC1S4262p8lRxT0cYsg.PNG/KakaoTalk_20260225_124446175.png?type=w966)   
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTUy/MDAxNzcyMDczMzIxNjE3.hwYB0yRxRxKsqGn4VI7DLVH6yMofQ34rU_FUOVmaRZQg.poSznlBxxxcZSPuLGOCldzUdVUnC9dk_jb2hEJ7-tJEg.PNG/KakaoTalk_20260226_113044644.png?type=w966)   
 
 
 ### 시스템 아키텍처
