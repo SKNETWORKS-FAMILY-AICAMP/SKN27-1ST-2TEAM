@@ -17,12 +17,12 @@
 | ![title](https://image.zeta-ai.io/profile-image/6c77c471-95aa-4a6a-8757-fbac21d7c266/80a1c813-5798-4d7e-a64b-d81e9d31240f.png) | ![title](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf37jD-_tgMHRVsj_vjPq6UXJOIevp7bsfIw&s) | ![title](https://lh3.googleusercontent.com/GLoH7rT6jRD-e6-vGIzbt41dsebD8UXnCJyokXpSHbk2YEMsYN_mA6krr_7IusjiLxhSXA6NoVGL1awXzVmX1eJ8uBHE0JlJDnxM=e365-w262) | ![title](https://i.pinimg.com/236x/8b/d0/c1/8bd0c190d5648e6c3969a1e54d8965a4.jpg) | ![title](https://daewonshop.cdn-nhncommerce.com/20240319/160312.983926000/glowpikmin_600.jpg) | ![title](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRncmxILJd7_JvY8MitNz_qu1Uhg66bkvSQ7Q&s) | 
 | [@ye-eun-min201](https://github.com/ye-eun-min201) | [@skn27jg](https://github.com/skn27jg) |  [@ohjuheecode](https://github.com/ohjuheecode) | [@nanseong](https://github.com/nanseong) | [@soiez2958](https://github.com/soiez2958) | [@samjucubix-stack](https://github.com/samjucubix-stack) |
 
-- 임예은: 팀장 , 화면설계
-- 이재건 : ERD 설계 
-- 오주희 : 데이터 분석
-- 권환성 : ERD 설계
-- 이성진 : 자료조사
-- 주연중 : 자료조사
+- 임예은: 팀장 , 프론트엔드 개발, 발표
+- 이재건 : ERD 설계, 백엔드 개발 
+- 오주희 : 데이터 분석, 데이터 전처리
+- 권환성 : ERD 설계, 백엔드 개발
+- 이성진 : 자료조사, 발표준비
+- 주연중 : 자료조사, 깃허브
 
 ## 프로젝트 주제 
 1. 브랜드별 차종별 리콜 현황 조회 및 신고
@@ -93,59 +93,65 @@
 
 ## 와이어프레임 
 #### 메인화면
-![title](https://private-user-images.githubusercontent.com/259223656/554554482-3f70274e-169c-4f78-a5ea-d618dadc989a.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTgwODEsIm5iZiI6MTc3MTk5Nzc4MSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NDgyLTNmNzAyNzRlLTE2OWMtNGY3OC1hNWVhLWQ2MThkYWRjOTg5YS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTM2MjFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1iOGY2NWJiZTEwZjk4Y2M3MGY5M2FjYjNiMWIxZWY3M2YxZTg3NzRhMTY3M2MxMDFmYjJmNjhlYzg1ZjRmMzNmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.fQ3QVBp4hePxdbuTdVtJFX1Gfm8y3lqHV8j0TPd8-3k)   
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTU2/MDAxNzcyMDY0NzUxODU5.hyJt8xUT0TfWqrL2S2VymkyMB4vug-6vzwWpBzm45gsg.u80_4y8IkYyDPiZjQZV9aamkKVDyyN29gpAiOHprK14g.PNG/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png?type=w966)
 
 메인화면 입니다 우측 상단에 있는 버튼으로 각 서비스로 이동할수 있습니다.
 
-#### 1-1. **리콜조회 (리콜대상 아닌경우)**
-![title](https://private-user-images.githubusercontent.com/259223656/554554546-0f98b81d-f059-4750-afaa-5767a2a6a53e.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTgzNzQsIm5iZiI6MTc3MTk5ODA3NCwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NTQ2LTBmOThiODFkLWYwNTktNDc1MC1hZmFhLTU3NjdhMmE2YTUzZS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQxMTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05YjUxYjQ0NGQzZjE1MWI0MzNkYzdjODNhZDBkOGNjZWY3MmRkNjNjNWQwMWUzYTMzYzMxNmYzZDNmZTk2YTc4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.P8-XRvp1qEzFnssmwhkzD3ud0C1_JGGRu-qiPOXHfO4)   
+#### 1. **리콜조회 (리콜대상 아닌경우)**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjI2/MDAxNzcyMDY0NzY2NzUw.5_evFGAD66HrOFLt5UDg7wlvqJzKE3vXmp0BDt1kyocg.GC8fG982-RbZ6ZH3WJkWi22B9gbX8Q7PM-R0wC3gJeMg.PNG/screencapture-localhost-8501-check-2026-02-26-09_01_56.png?type=w966)   
  
    리콜 조회 화면입니다 리콜대상이 아닌경우 "리콜 대상이 아닙니다" 메시지가 출력됩니다. 
 
-#### **1-2. 리콜조회 (리콜대상인 경우)**
-![title](https://private-user-images.githubusercontent.com/259223656/554554563-1e043774-11a6-4f58-b7b9-190a79878a8c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTgzNzQsIm5iZiI6MTc3MTk5ODA3NCwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NTYzLTFlMDQzNzc0LTExYTYtNGY1OC1iN2I5LTE5MGE3OTg3OGE4Yy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQxMTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0xMTM5YzIzZGY0M2VhMjQxNThkZWNjM2FiYTdiOTMwZTQ5MjI4NzQwMjYwYWY2ZDRkZTZkNjMxNDQxNjVjMTE0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.yL2flWEadz9bZSCzy11SRi2LjKHZZvHMvgL7n4XiICI)   
+#### **1-1. 리콜조회 (리콜대상인 경우)**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMTg2/MDAxNzcyMDY0NzcwOTcz.F-TEnPsv5NHpcLu8YHavggx3uXwQdv_9Vlo5BuzJ5Uwg.lPLi6hiawXUxU5_i4DAA8ORYJB-phf8MsS15kxiEYdYg.PNG/screencapture-localhost-8501-check-2026-02-26-09_02_19.png?type=w966)   
 
 
    리콜 조회 화면입니다 리콜대상일 경우 "리콜 대상 차량입니다" 메시지와 리콜사유, 개수가 출력됩니다.  
 해당 차량의 리콜 현황에서 데이터를 조회 할 수 있습니다.   
 하단의 결함 신고하기 버튼을 클릭시 결함 신고 페이지로 연결됩니다.
 
-#### **2-1. 리콜 분석**
-![title](https://private-user-images.githubusercontent.com/259223656/554618353-e14f3a70-00a2-4734-be87-f0fd37e6195f.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIwMDc2NjksIm5iZiI6MTc3MjAwNzM2OSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NjE4MzUzLWUxNGYzYTcwLTAwYTItNDczNC1iZTg3LWYwZmQzN2U2MTk1Zi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwODE2MDlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04MzU3NjJjMDZiZDViZjk5YjhhYzZiOTZjODZkOTRkODhiMWZhYmM2YWU0YzdjZGIzZTQxZWU5MzRjZjkwNzRlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.OGyPfJdxo_5ABT89fqJ_lnn2fFUZTXoTcdQ8rG4xhgs)   
+#### **2. 국산차 리콜 분석**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjk0/MDAxNzcyMDY0Nzc1MjA5.NUBh3_3eWrQZSBYHHb0cKZd5hFCGtVZIlWeCqPgI_dEg.-8mSznFjDCyaHp1IsOqXQO1tzuc_0cEzXjLNLAsUQCAg.PNG/screencapture-localhost-8501-analysis-2026-02-26-09_03_06.png?type=w966)   
 
-   리콜 분석 페이지 입니다 여기서 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
-    
 
-#### **3-1. FAQ**
-![title](https://private-user-images.githubusercontent.com/259223656/554554730-b9b5634e-89b7-48b8-a317-c7760fcaceaa.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTg2MzksIm5iZiI6MTc3MTk5ODMzOSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NzMwLWI5YjU2MzRlLTg5YjctNDhiOC1hMzE3LWM3NzYwZmNhY2VhYS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQ1MzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1mMjY1MWUwMGJiODY5Mjk1ZWYyZDNhYTk4MTViYTM5Y2M0NWZiYzZjN2Q4YWQxOTdhNjg0NzVkZjlhMGNkNDNhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.TIBJzhYbJYtypDcT-wjivIPJ45bYTtsDBhqO9psWLd8)
+   국산차 리콜 분석 페이지 입니다 여기서 국산차 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
+
+#### **2-1. 외산차 리콜 분석**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjEx/MDAxNzcyMDY0Nzc4NTY1.Z-upGuMbH4bdFvj_MfIa2udPlIkLphQVfuu6BWC27sEg.pFMpm-ypxZdeXzcKNJXc8jPKwGkkQvJNlxToI9BCDaUg.PNG/screencapture-localhost-8501-analysis-2026-02-26-09_03_40.png?type=w966)   
+
+
+   외산차 리콜 분석 페이지 입니다 여기서 외산차 브랜드별 리콜건수 TOP10 및 다양한 분석 데이터를 열람할수 있습니다.
+
+#### **3. FAQ**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjcz/MDAxNzcyMDY0NzgxMTQ5.M3cGjq07ZeAp0rzAVbeH8to3mKwXtDWvML1uh-zyHlEg.gQbXvkKDVUmoG0mKX1yhs-lWISrTjEqLoP3x9tlJ5Ugg.PNG/screencapture-localhost-8501-faq-2026-02-26-09_04_21.png?type=w966)
 
   FAQ 페이지 입니다 자주 묻는 질문의 검색 및 열람이 가능합니다.   
 
-#### **4-1. 결함신고 1**
-![title](https://private-user-images.githubusercontent.com/259223656/554554660-67cfdd70-8262-4a34-ac5a-5cf779138b48.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTg2MzksIm5iZiI6MTc3MTk5ODMzOSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NjYwLTY3Y2ZkZDcwLTgyNjItNGEzNC1hYzVhLTVjZjc3OTEzOGI0OC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQ1MzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMWYyNTlhYmNiMzA4NTE4MWJlZmNkYmY4NDZjMDVjOGVhZDUxZWJiYjVkMWQ3Yjk1YjdhNzIxMWJjMjZhYTJhJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.n6EtxmDT9jTzCoi5oWggMLTLFLLj3vmzncC0YI0rBXo)   
+#### **4. 결함신고 1**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfOTcg/MDAxNzcyMDY0Nzg1MDM4.oHx4OgB9X2Ru0CJ-y0mPdsjsKSX5AoCjyrcNnft8DPIg.cgGAz-rEUb2zeWKI-y8_Xor68h-YL_n5CgCI4NTMQiQg.PNG/screencapture-localhost-8501-report-2026-02-26-09_04_30.png?type=w966)   
 
-  결함신고 페이지 입니다 주의사항을 고지받고 다음페이지로 넘어갈수 있습니다.
+  결함신고 페이지 입니다 주의사항을 확인하고 신고를 계속 진행할 수 있습니다.
 
-#### **4-2. 결함신고 2** 
-![title](https://private-user-images.githubusercontent.com/259223656/554554675-93439e0d-f73b-4591-ba3c-bd0faf2da079.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTg2MzksIm5iZiI6MTc3MTk5ODMzOSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0Njc1LTkzNDM5ZTBkLWY3M2ItNDU5MS1iYTNjLWJkMGZhZjJkYTA3OS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQ1MzlaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT02ODRmMmE3NDQ5NDQ5MjM0ODc2NTIyZjE3MGI4N2NmMmZlZTVkYjA1NWQwNTQ2ZDI4YWVhYzU0Yjk0ZDNjNTY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.O8RVN_5TtH3AgvmRz3EId9jH0m7pIotERGEP-k5zu0E)   
+#### **4-1. 결함신고2**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNDAg/MDAxNzcyMDY0Nzg2ODQx.CpCMqJHimGZXCFnPPmnwAR4jITw2vQS1OkTHlr03sgsg.h7pc_Z9KwO5uRT-dMhHoEZlDkBniq9Gx5OeCpQ1bzMgg.PNG/screencapture-localhost-8501-report-2026-02-26-09_04_42.png?type=w966)   
 
-  약관동의 페이지 입니다 약관정보를 확인하고 동의하여 진행하거나 신고를 그만둘수 있습니다.
+  약관동의 페이지 입니다 약관정보를 확인하고 동의하여 진행하거나 신고를 그만둘수있습니다.
 
-#### **4-3. 결함신고3**
-![title](https://private-user-images.githubusercontent.com/259223656/554554688-a3e001c8-da41-446f-87c5-416d4ffc4735.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIwMDcxNjIsIm5iZiI6MTc3MjAwNjg2MiwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0Njg4LWEzZTAwMWM4LWRhNDEtNDQ2Zi04N2M1LTQxNmQ0ZmZjNDczNS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwODA3NDJaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lNjMxNWMxNTExODhkYzhhZTZkNTY1MmY4MTQ1NjAyNWQ2YjgzYTlmMDFlMDdkMjQ2YTVkNjg2YWRmNTZmZjQwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ovMwVCQjUG2otkOYLijnUM7K8C1vP0xrjRFMnXe5J5o)   
+
+#### **4-2. 결함신고3**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMiAg/MDAxNzcyMDY0Nzg4OTMy.s24zeE9ntp8nYg63uf2oakq0ep0mUwhztskRrgYuqVQg.JpzRYVgXvlaGywc7LJB5grPvzO9AKC7Ve8ZflybBAqkg.PNG/screencapture-localhost-8501-report-2026-02-26-09_05_53.png?type=w966)   
 
   결함신고 페이지 입니다 제공된 양식을 활용해 신고를 확정할수 있습니다.
 
-
-#### **4-4. 결함신고 4**
-![title](https://private-user-images.githubusercontent.com/259223656/554554714-27ced129-f098-4b5d-b4f4-48daeaac7a2c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTg4ODcsIm5iZiI6MTc3MTk5ODU4NywicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTU0NzE0LTI3Y2VkMTI5LWYwOTgtNGI1ZC1iNGY0LTQ4ZGFlYWFjN2EyYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTQ5NDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kYTQyMTJkNmIzNjI0ODZmY2IwZTVjNTU0Y2E3YTEyZDE3Yjg3ZTA0ZTAzN2FlNWRiMjc5NDc1YjFmNTg2ZWQ2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.oGdFg618TBtSV3nS8wNmPmXGhYTRq6Qv2NpGx2ilL5o)   
+#### **4-3. 결함신고 4**
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjMw/MDAxNzcyMDY0NzkxMTk3.7Ki6vnkJFpKuaA4RnfQqqBk0LFtL8sxV7mqr4zppoqUg.0qpV4rFlECeLf01f8Z8RNYDDmeYi9bLdAOFc_9R7A4Ag.PNG/screencapture-localhost-8501-report-2026-02-26-09_06_06.png?type=w966)   
 
 결함신고 완료 페이지 입니다 결함신고가 완료된것을 확인할 수 있습니다.
  
 
 ## ERD
 #### **ERD 설명도**
-![title](https://private-user-images.githubusercontent.com/259223656/554619947-7f155b6f-ad4c-43b1-b5a6-9386a86728b7.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzIwMDc4NTQsIm5iZiI6MTc3MjAwNzU1NCwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NjE5OTQ3LTdmMTU1YjZmLWFkNGMtNDNiMS1iNWE2LTkzODZhODY3MjhiNy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwODE5MTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04NWJiODY0MWNiNjQwZTI0MzVmYWNjMGJmZTUxOTk0Mzg5N2VhOTI2NDY0NzNiNDlmNTQ4ZDlhODIzODE5ZjI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.r7DePt_HEsrjVSL57XbVfbOWdq1hn6w2Eo_3VYKrdCw)   
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfNTEg/MDAxNzcyMDY0NzkzMjg5.dObo2RLd5u-MuLAf0e6GdM5RXU1AFCzoyGpM1lybL00g.CKZqIeKsa94LmAS8wRWFOtOysZFNUaNt_WJQk5OuHJ0g.PNG/KakaoTalk_20260225_160813015.png?type=w966)   
 
 * 🛠️ 주요 기능 (Key Features)
   - 실시간 데이터 검증 (Check)
@@ -161,11 +167,11 @@
     + 신고자-차량-결함 정보를 연결하여 체계적인 리포트 생성 및 이력 저장
 
 #### **실제 ERD**
-![title](https://private-user-images.githubusercontent.com/259223656/554545148-1bea18e7-031d-4c3f-a819-e0ade104f46d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTY4MTUsIm5iZiI6MTc3MTk5NjUxNSwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTQ1MTQ4LTFiZWExOGU3LTAzMWQtNGMzZi1hODE5LWUwYWRlMTA0ZjQ2ZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTE1MTVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1hZGJiZWViNjc3YzdmOWUwNWFlMTY4Y2Q3OGM2NWFmNGNjMzA2YjQ4M2E2ZGNlMjE4ZTZlNGUwMjMyMzJiMjA3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.PT6md2wTXaZ83RagIXdP-Mzj67eW3eXfBtIQ4ACC9xU)   
+![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMzAg/MDAxNzcyMDY0Nzk2MjQ0.kM8N-5ZpxOp81Iws-xpclMloM2TCi4pOhCrTQaoaisEg.sW7X3PX-e1xoE6PG5TlLrI3quBC1S4262p8lRxT0cYsg.PNG/KakaoTalk_20260225_124446175.png?type=w966)   
 
 
 ### 시스템 아키텍처
- * ![title](https://private-user-images.githubusercontent.com/259223656/554545420-bd5a6ab6-7b4b-48be-9c65-35b0736fd2ea.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzE5OTY3NzQsIm5iZiI6MTc3MTk5NjQ3NCwicGF0aCI6Ii8yNTkyMjM2NTYvNTU0NTQ1NDIwLWJkNWE2YWI2LTdiNGItNDhiZS05YzY1LTM1YjA3MzZmZDJlYS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIyNVQwNTE0MzRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1jMTA5MjcxMzQwY2NhYjExZjI0OWI1OGRmODk0YTUyNTYxZjg4ZmM2MTRjZWMzMWNjY2EyNzNhZjI4MTU5MWI4JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.pMKikBpSUh4pIlYv7Aw-ZBtJL31TbiDFtUKgLajZ-lM)   
+ * ![title](https://postfiles.pstatic.net/MjAyNjAyMjZfMjQ3/MDAxNzcyMDY0Nzk0ODI5.YX8WfWni2p_oTz4VknI1LO4VndzQraSh5nJu_nJaVYsg.ZPLMTYUEuAj02QF1tRRjNTSx8r97Gp5tTP0g2hDHbYog.PNG/KakaoTalk_20260225_100325624.png?type=w966)   
 
 
 ## 인용 자료
@@ -173,4 +179,4 @@
 [공공데이터 포털](https://www.data.go.kr/)   
 
 
-  - 
+  
