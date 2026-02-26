@@ -106,10 +106,8 @@ with col_main:
         with st.expander(f"📚 {target_model} 모델의 전체 리콜 이력 (총 {len(recalls_list)}건)"):
             if not recalls_list.empty:
                 st.dataframe(
-                    recalls_list[["recall_number", "component", "recall_start_date", "recall_reason"]],
+                    recalls_list[["recall_start_date", "recall_reason"]],
                     column_config={
-                        "recall_number": "리콜번호",
-                        "component": "장치명",
                         "recall_start_date": "리콜시작연도",
                         "recall_reason": "리콜사유"
                     },

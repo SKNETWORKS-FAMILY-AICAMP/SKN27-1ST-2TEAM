@@ -44,8 +44,7 @@ def get_recall_select_data():
     query = """
         SELECT 
             m.name_ko AS manufacturer_name, 
-            v.model_name,                  
-            v.model_year                  
+            v.model_name                              
         FROM 
             vehicle_models v
         INNER JOIN 

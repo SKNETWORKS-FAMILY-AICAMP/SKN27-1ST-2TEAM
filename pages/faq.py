@@ -108,11 +108,11 @@ with col_main:
             answer = answer.replace("\\n", "\n").replace(" \n ", "\n")
 
             # 환상님이 만드신 예쁜 expander UI에 데이터 담기
-            with st.expander(f"Q.  {answer}"):
+            with st.expander(f"Q.  {question}"):
                 st.markdown(f"""
                 <div class="faq-a">
                     <span class="faq-a-badge">A.</span>
-                    <span class="faq-a-text">{question}</span>
+                    <span class="faq-a-text">{answer}</span>
                 </div>
                 """, unsafe_allow_html=True)
 
