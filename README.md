@@ -12,6 +12,7 @@
 
 # 프로젝트 구성원 및 역할
 
+**팀명: 리콜체크해조**
 | 임예은 | 이재건 | 오주희 | 권환성 | 이성진 | 주연중|
 | --- | --- | --- | --- | --- | --- |
 | ![title](https://image.zeta-ai.io/profile-image/6c77c471-95aa-4a6a-8757-fbac21d7c266/80a1c813-5798-4d7e-a64b-d81e9d31240f.png) | ![title](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf37jD-_tgMHRVsj_vjPq6UXJOIevp7bsfIw&s) | ![title](https://lh3.googleusercontent.com/GLoH7rT6jRD-e6-vGIzbt41dsebD8UXnCJyokXpSHbk2YEMsYN_mA6krr_7IusjiLxhSXA6NoVGL1awXzVmX1eJ8uBHE0JlJDnxM=e365-w262) | ![title](https://i.pinimg.com/236x/8b/d0/c1/8bd0c190d5648e6c3969a1e54d8965a4.jpg) | ![title](https://daewonshop.cdn-nhncommerce.com/20240319/160312.983926000/glowpikmin_600.jpg) | ![title](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRncmxILJd7_JvY8MitNz_qu1Uhg66bkvSQ7Q&s) | 
